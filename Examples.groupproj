@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3616F3CD-030D-4AB4-9474-ACF3559E1B19}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Hello World\HelloWorld.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Echo\PingPong.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HelloWorld">
+        <MSBuild Projects="Hello World\HelloWorld.dproj"/>
+    </Target>
+    <Target Name="HelloWorld:Clean">
+        <MSBuild Projects="Hello World\HelloWorld.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HelloWorld:Make">
+        <MSBuild Projects="Hello World\HelloWorld.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PingPong">
+        <MSBuild Projects="Echo\PingPong.dproj"/>
+    </Target>
+    <Target Name="PingPong:Clean">
+        <MSBuild Projects="Echo\PingPong.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PingPong:Make">
+        <MSBuild Projects="Echo\PingPong.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HelloWorld;PingPong"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HelloWorld:Clean;PingPong:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HelloWorld:Make;PingPong:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
