@@ -4,6 +4,7 @@
 {$R *.res}
 
 uses
+  FastMM5,
   TelegramBotApi.Client,
   TelegramBotApi.Types,
   System.SysUtils;
@@ -25,10 +26,11 @@ begin
 end;
 
 begin
+  ReportMemoryLeaksOnShutdown := True;
   try
     { TODO -oUser -cConsole Main : Insert code here }
     Awesome;
-    Readln
+    Readln;
   except
     on E: Exception do
       WriteLn(E.ClassName, ': ', E.Message);
