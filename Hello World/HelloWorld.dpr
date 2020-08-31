@@ -1,4 +1,4 @@
-﻿program HelloWord;
+﻿program HelloWorld;
 
 {$APPTYPE CONSOLE}
 {$R *.res}
